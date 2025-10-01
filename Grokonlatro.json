@@ -1,0 +1,19 @@
+{
+	"id": "Grokonlatro",
+	"name": "Grokonlatro",
+	"author": ["Maelmc"],
+	"description": "Un mod inspiré par les Grokons pour les Grokons",
+	"prefix": "grokon",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "EA6F22",
+	"badge_text_colour": "FFFFFF",
+  	"display_name": "Grokonlatro",
+	"version": "1.0",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0827c)"
+	],
+  	"conflicts": [],
+	"provides": [],
+	"dump_loc": false 
+}
