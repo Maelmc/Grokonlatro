@@ -1,3 +1,24 @@
+function grokon_in_pool(self, args)
+    if next(find_joker("Showman")) then
+        return true
+    end
+
+    if next(find_joker(self.key)) then
+        return false
+    end
+
+    if self.enhancement_gate and G.playing_cards then
+        for _, v in pairs(G.playing_cards) do
+            if v.config.center.key == self.enhancement_gate then
+                return true
+            end
+        end
+        return false
+    end
+
+    return true
+end
+
 SMODS.Joker {
     key = "marsh",
     pos = {x = 0, y = 0},
@@ -37,24 +58,7 @@ SMODS.Joker {
         end
     end,
     in_pool = function (self, args)
-        if next(find_joker("Showman")) then
-            return true
-        end
-
-        if next(find_joker(self.key)) then
-            return false
-        end
-
-        if self.enhancement_gate and G.playing_cards then
-            for _, v in pairs(G.playing_cards) do
-                if v.config.center.key == self.enhancement_gate then
-                    return true
-                end
-            end
-            return false
-        end
-        
-        return true
+        return grokon_in_pool(self, args)
     end
 }
 
@@ -162,105 +166,106 @@ SMODS.Joker {
         card.ability.extra.last_hand = G.GAME.last_hand_played or "None"
     end,
     in_pool = function (self, args)
-        if next(find_joker("Showman")) then
-            return true
-        end
-
-        if next(find_joker(self.key)) then
-            return false
-        end
-
-        if self.enhancement_gate and G.playing_cards then
-            for _, v in pairs(G.playing_cards) do
-                if v.config.center.key == self.enhancement_gate then
-                    return true
-                end
-            end
-            return false
-        end
-        
-        return true
+        return grokon_in_pool(self, args)
     end
 }
 
+-- mostly taken from VanillaRemade
 SMODS.Joker {
-    key = "expedixon",
-    pos = {x = 4, y = 0},
-    soul_pos = {x = 5, y = 0},
-    config = {extra = {common = 3, rare = 1}},
+    key = "candide",
+    pos = {x = 6, y = 0},
+    config = {extra = {chips = 50, mult = 10, min_chips_mult = 0, xmult = 2, min_xmult = 1}},
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.common, card.ability.extra.rare}}
+        local r_chips = {}
+        for i = card.ability.extra.min_chips_mult, card.ability.extra.chips do
+            r_chips[#r_chips + 1] = tostring(i)
+        end
+        local r_mults = {}
+        for i = card.ability.extra.min_chips_mult, card.ability.extra.mult do
+            r_mults[#r_mults + 1] = tostring(i)
+        end
+        local r_xmults = {}
+        for i = card.ability.extra.min_xmult, card.ability.extra.xmult do
+            r_xmults[#r_xmults + 1] = tostring(i)
+        end
+        local loc_chips = ' ' .. (localize('k_chips')) .. ' '
+        local loc_mult = ' ' .. (localize('k_mult')) .. ' '
+        local loc_xmult = ' ' .. (localize('k_xmult')) .. ' '
+        main_start = {
+            -- chips
+            { n = G.UIT.T, config = { text = '  +', colour = G.C.CHIPS, scale = 0.32 } },
+            { n = G.UIT.O, config = { object = DynaText({ string = r_chips, colours = { G.C.BLUE }, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0 }) } },
+            {n = G.UIT.O,config = {
+                    object = DynaText({
+                        string = {
+                            { string = 'rand()', colour = G.C.JOKER_GREY }, { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.BLUE },
+                            loc_chips, loc_chips, loc_chips, loc_chips, loc_chips, loc_chips, loc_chips, loc_chips, loc_chips,
+                            loc_chips, loc_chips, loc_chips, loc_chips },
+                        colours = { G.C.UI.TEXT_DARK },
+                        pop_in_rate = 9999999,
+                        silent = true,
+                        random_element = true,
+                        pop_delay = 0.2011,
+                        scale = 0.32,
+                        min_cycle_time = 0
+                    })
+                }
+            },
+            -- mult
+            { n = G.UIT.T, config = { text = '  +', colour = G.C.MULT, scale = 0.32 } },
+            { n = G.UIT.O, config = { object = DynaText({ string = r_mults, colours = { G.C.RED }, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0 }) } },
+            {n = G.UIT.O,config = {
+                    object = DynaText({
+                        string = {
+                            { string = 'rand()', colour = G.C.JOKER_GREY }, { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.RED },
+                            loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult,
+                            loc_mult, loc_mult, loc_mult, loc_mult },
+                        colours = { G.C.UI.TEXT_DARK },
+                        pop_in_rate = 9999999,
+                        silent = true,
+                        random_element = true,
+                        pop_delay = 0.2011,
+                        scale = 0.32,
+                        min_cycle_time = 0
+                    })
+                }
+            },
+            -- xmult
+            {n=G.UIT.C, config={align = "m", colour = G.C.MULT, r = 0.05, padding = 0.03, res = 0.15}},
+            {n=G.UIT.T, config={text = 'X', colour = G.C.WHITE, scale = 0.32}},
+            {n=G.UIT.O, config={
+                object = DynaText({
+                    string = {
+                        { string = 'rand()', colour = G.C.JOKER_GREY }, { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.RED },
+                        loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult,
+                        loc_mult, loc_mult, loc_mult, loc_mult },
+                    colours = {G.C.WHITE},
+                    pop_in_rate = 9999999,
+                    silent = true,
+                    random_element = true,
+                    pop_delay = 0.2011,
+                    scale = 0.32,
+                    min_cycle_time = 0
+                })
+            }},
+        }
+        return { main_start = main_start }
     end,
     rarity = 4,
     cost = 20,
     atlas = "grokon_jokers",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.setting_blind then
-            for i = 1, #G.jokers.cards do
-                local v = G.jokers.cards[i]
-                if v.ability.expedixon then
-                    G.E_MANAGER:add_event(Event({
-                    func = function() 
-                        SMODS.destroy_cards(v, true, nil, true)
-                        return true
-                    end
-                }))
-                end
-            end
-            for _ = 1, card.ability.extra.common do
-                local rarity = pseudorandom("expedixon",1,100) < 70*1.05263158 and "Common" or "Uncommon"
-                local cardgen = SMODS.create_card({
-                    set = "Joker",
-                    area = G.jokers,
-                    rarity = rarity,
-                    edition = "e_negative",
-                    stickers = {"eternal"},
-                    force_stickers = true,
-                    key_append = 'expedixon'
-                })
-                cardgen.ability.expedixon = true
-                cardgen:add_to_deck()
-                G.jokers:emplace(cardgen)
-                cardgen:start_materialize()
-            end
-            for _ = 1, card.ability.extra.rare do
-                local rarity = pseudorandom("expedixon",1,1) == 1 and "Legendary" or "Rare"
-                local cardgen = SMODS.create_card({
-                    set = "Joker",
-                    area = G.jokers,
-                    rarity = rarity,
-                    edition = "e_negative",
-                    legendary = rarity == "Legendary" or nil,
-                    stickers = {"eternal"},
-                    force_stickers = true,
-                    key_append = 'expedixon'
-                })
-                cardgen.ability.expedixon = true
-                cardgen:add_to_deck()
-                G.jokers:emplace(cardgen)
-                cardgen:start_materialize()
-            end
+        if context.joker_main then
+            return {
+                chips = pseudorandom('candide', card.ability.extra.min_chips_mult, card.ability.extra.chips),
+                mult = pseudorandom('candide', card.ability.extra.min_chips_mult, card.ability.extra.mult),
+                xmult = pseudorandom('candide', card.ability.extra.min_xmult, card.ability.extra.xmult),
+                message = localize("grokon_chaos")
+            }
         end
     end,
     in_pool = function (self, args)
-        if next(find_joker("Showman")) then
-            return true
-        end
-
-        if next(find_joker(self.key)) then
-            return false
-        end
-
-        if self.enhancement_gate and G.playing_cards then
-            for _, v in pairs(G.playing_cards) do
-                if v.config.center.key == self.enhancement_gate then
-                    return true
-                end
-            end
-            return false
-        end
-
-        return true
+        return grokon_in_pool(self, args)
     end
 }
