@@ -52,6 +52,7 @@ return {
             grokon_stable_ex = "Stable !",
             grokon_instable_dot = "Instable...",
             grokon_chaos = "Chaos",
+            grokon_chips = "Chips",
         },
     }
 }

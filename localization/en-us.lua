@@ -43,6 +43,10 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult and {C:attention}#3#{C:inactive})"
                 }
             },
+            j_grokon_candide = {
+                name = "Candide",
+                text = {}
+            },
         },
     },
     misc = {
@@ -53,6 +57,7 @@ return {
             grokon_stable_ex = "Stable !",
             grokon_instable_dot = "Unstable...",
             grokon_chaos = "Chaos",
+            grokon_chips = "Jetons",
         },
     }
 }
