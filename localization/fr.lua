@@ -28,9 +28,8 @@ return {
                 name = "Expéd'Ixon",
                 text = {
                     "Lorsque la {C:attention}Blinde{} est sélectionnée,",
-                    "crée {C:attention}#1# Jokers {C:blue}Commun{} ou",
-                    "{C:green}Peu commun{} et {C:attention}#2# Joker",
-                    "{C:red}Rare{} ou {C:purple}Légendaire{}, tous {C:dark_edition}Négatifs",
+                    "crée {C:attention}#1# Jokers {C:blue}Commun{} ou {C:green}Peu commun{} et",
+                    "{C:attention}#2# Joker {C:red}Rare{} ou {C:purple}Légendaire{}, tous {C:dark_edition}Négatifs",
                     "Les détruit au début de la prochaine {C:attention}Blinde"
                 }
             },
@@ -40,6 +39,48 @@ return {
                     "Octroie Multi. {X:mult,C:white}x#1#{} par main",
                     "{C:attention}identique consécutive{} jouée",
                     "{C:inactive}(Actuellement : Multi. {X:mult,C:white}x#2#{C:inactive} et {C:attention}#3#{C:inactive})"
+                }
+            },
+            j_grokon_candide = {
+                name = "Candide",
+                text = {}
+            },
+            j_grokon_revarine = {
+                name = "Revarine",
+                text = {
+                    "Chaque {C:attention}Valet{} en main",
+                    "donne {C:chips}+#1#{} Jetons"
+                }
+            },
+            j_grokon_turnute = {
+                name = "Turnute",
+                text = {
+                    "Tout coûte {C:money}#1# ${} de moins"
+                }
+            },
+            j_grokon_boba = {
+                name = "Boba",
+                text = {
+                    "Ce Joker gagne {C:red}+#1#{} au Multi.",
+                    "lorsque chaque {C:attention}2{} joué score",
+                    "{C:inactive}(Actuellement : {C:red}+#2#{C:inactive} au Multi.)"
+                }
+            },
+            j_grokon_santithur = {
+                name = "Santithur",
+                text = {
+                    "Les cartes améliorées jouées",
+                    "deviennent {C:attention}Sauvages"
+                }
+            },
+            j_grokon_felt = {
+                name = "Felt",
+                text = {
+                    "Réduit les {C:green,E:1,S:1.1}probabilités à #1#",
+                    "{C:inactive}(ex. : {C:green}1 sur 3{C:inactive} -> {C:green}#1# sur 3{C:inactive})",
+                    "Gagne {C:red}+#2#{} au Multi. lorsqu'un événement",
+                    "à probabilité essaie de se déclencher",
+                    "{C:inactive}(Actuellement : {C:red}+#3#{C:inactive} au Multi.)"
                 }
             },
         },
@@ -53,6 +94,8 @@ return {
             grokon_instable_dot = "Instable...",
             grokon_chaos = "Chaos",
             grokon_chips = "Chips",
+            grokon_achete = "That's it j'achète",
+            grokon_johto_caps = "JOHTO",
         },
     }
 }

@@ -6,4 +6,7 @@ else
   sprite()
 end
 
-assert(SMODS.load_file("jokers.lua"))()
+assert(SMODS.load_file("jokers/common.lua"))()
+assert(SMODS.load_file("jokers/uncommon.lua"))()
+assert(SMODS.load_file("jokers/rare.lua"))()
+assert(SMODS.load_file("jokers/legendary.lua"))()

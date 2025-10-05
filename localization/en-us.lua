@@ -47,6 +47,43 @@ return {
                 name = "Candide",
                 text = {}
             },
+            j_grokon_revarine = {
+                name = "Revarine",
+                text = {
+                    "Each {C:attention}Jack{} held in hand",
+                    "gives {C:chips}+#1#{} Chips"
+                }
+            },
+            j_grokon_turnute = {
+                name = "Turnute",
+                text = {
+                    "Everything costs {C:money}$#1#{} less"
+                }
+            },
+            j_grokon_boba = {
+                name = "Boba",
+                text = {
+                    "This Joker gains {C:red}+#1#{} Mult",
+                    "when each played {C:attention}2{} scores",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                }
+            },
+            j_grokon_santithur = {
+                name = "Santithur",
+                text = {
+                    "Played enhanced cards",
+                    "become {C:attention}Wild"
+                }
+            },
+            j_grokon_felt = {
+                name = "Felt",
+                text = {
+                    "Reduces probabilities to {C:green}#1#",
+                    "Gains {C:red}+#2#{} Mult when a",
+                    "probability event tries to trigger",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                }
+            },
         },
     },
     misc = {
@@ -58,6 +95,8 @@ return {
             grokon_instable_dot = "Unstable...",
             grokon_chaos = "Chaos",
             grokon_chips = "Jetons",
+            grokon_achete = "That's it I buy",
+            grokon_johto_caps = "JOHTO",
         },
     }
 }
