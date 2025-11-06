@@ -21,6 +21,7 @@ end
 
 SMODS.Joker {
     key = "marsh",
+    grokon = true,
     pos = {x = 0, y = 0},
     config = {extra = {}},
     loc_vars = function(self, info_queue, card)
@@ -129,28 +130,62 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "revarine",
-    pos = { x = 9, y = 0 },
-    config = { extra = { chips = 60 } },
+    key = "attorney",
+    grokon = true,
+    pos = {x = 1, y = 1},
+    config = {extra = {mult_mod = 5}},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips } }
+        local gcount = 0
+        if G.jokers and G.jokers.cards then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].config.grokon then gcount = gcount + 1 end
+            end
+        end
+        return { vars = {card.ability.extra.mult_mod, gcount} }
     end,
     rarity = 1,
-    cost = 5,
+    cost = 4,
     atlas = "grokon_jokers",
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 11 then
-            if context.other_card.debuff then
-                return {
-                    message = localize('k_debuffed'),
-                    colour = G.C.RED
-                }
-            else
-                return {
-                    mult = card.ability.extra.chips
-                }
+        if context.joker_main then
+            local gcount = 0
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].config.center.grokon then gcount = gcount + 1 end
             end
+            return {
+                xmult = card.ability.extra.mult_mod * gcount
+            }
         end
     end,
+    in_pool = function (self, args)
+        return grokon_in_pool(self, args)
+    end
+}
+
+SMODS.Joker {
+    key = "lucky",
+    grokon = true,
+    pos = {x = 2, y = 1},
+    config = {extra = {chips = 40}},
+    loc_vars = function(self, info_queue, card)
+        return { vars = {card.ability.extra.chips, card.ability.extra.chips * (G.GAME and G.GAME.belj_count or 0)} }
+    end,
+    rarity = 1,
+    cost = 4,
+    atlas = "grokon_jokers",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.chips * G.GAME.belj_count
+            }
+        end
+    end,
+    add_to_deck = function (self, card, from_debuff)
+        G.GAME.belj_count = (G.GAME.belj_count or 0) + 1
+    end,
+    in_pool = function (self, args)
+        return true, {allow_duplicates = true}
+    end
 }

@@ -5,7 +5,8 @@ return {
                 name = "Marsh",
                 text = {
                     "Lorsque la {C:attention}Blinde{} est sélectionnée,",
-                    "crée un {C:attention}condiment"
+                    "crée un {C:attention}condiment",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_pates = {
@@ -49,13 +50,15 @@ return {
                 name = "Revarine",
                 text = {
                     "Chaque {C:attention}Valet{} en main",
-                    "donne {C:chips}+#1#{} Jetons"
+                    "donne {C:chips}+#1#{} Jetons",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_turnute = {
                 name = "Turnute",
                 text = {
-                    "Tout coûte {C:money}#1# ${} de moins"
+                    "Tout coûte {C:money}#1# ${} de moins",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_boba = {
@@ -63,14 +66,16 @@ return {
                 text = {
                     "Ce Joker gagne {C:red}+#1#{} au Multi.",
                     "lorsque chaque {C:attention}2{} joué score",
-                    "{C:inactive}(Actuellement : {C:red}+#2#{C:inactive} au Multi.)"
+                    "{C:inactive}(Actuellement : {C:red}+#2#{C:inactive} au Multi.)",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_santithur = {
                 name = "Santithur",
                 text = {
                     "Les cartes améliorées jouées",
-                    "deviennent {C:attention}Sauvages"
+                    "deviennent {C:attention}Sauvages",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_felt = {
@@ -80,7 +85,41 @@ return {
                     "{C:inactive}(ex. : {C:green}1 sur 3{C:inactive} -> {C:green}#1# sur 3{C:inactive})",
                     "Gagne {C:red}+#2#{} au Multi. lorsqu'un événement",
                     "à probabilité essaie de se déclencher",
-                    "{C:inactive}(Actuellement : {C:red}+#3#{C:inactive} au Multi.)"
+                    "{C:inactive}(Actuellement : {C:red}+#3#{C:inactive} au Multi.)",
+                    "{C:attention}Grokon",
+                }
+            },
+            j_grokon_scarapace = {
+                name = "Scarapace",
+                text = {
+                    "{X:mult,C:white}x#1#{} sur la {C:attention}première",
+                    "main de la manche",
+                    "{C:attention}Grokon",
+                }
+            },
+            j_grokon_attorney = {
+                name = "Grokon Attorney",
+                text = {
+                    "Multi. {C:mult}+#1#{} pour",
+                    "chaque {C:attention}Grokon{}",
+                    "{C:inactive}(Actuellement Multi. {C:red}+#2#{C:inactive})",
+                }
+            },
+            j_grokon_typhou = {
+                name = "Typhou",
+                text = {
+                    "Les {C:attention}Grokons{}",
+                    "ajoutent chacun {X:mult,C:white} x#1# {} au Multi.",
+                }
+            },
+            j_grokon_lucky = {
+                name = "Lucky",
+                text = {
+                    "{C:chips}+#1#{} Jetons pour chaque",
+                    "{C:attention}Lucky{} acheté durant la partie",
+                    "{C:inactive}(Actuellement : {C:chips}+#2#{C:inactive} Jetons)",
+                    "Ce Joker peut apparaître plusieurs fois",
+                    "{C:attention}Grokon",
                 }
             },
         },

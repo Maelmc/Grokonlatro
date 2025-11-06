@@ -42,6 +42,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "turnute",
+    grokon = true,
     pos = {x = 10, y = 0},
     config = {extra = {money = 1}},
     loc_vars = function(self, info_queue, card)
@@ -87,6 +88,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "boba",
+    grokon = true,
     pos = {x = 11, y = 0},
     config = {extra = {mult = 0, mult_mod = 2}},
     loc_vars = function(self, info_queue, card)

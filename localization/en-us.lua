@@ -5,13 +5,14 @@ return {
                 name = "Marsh",
                 text = {
                     "When {C:attention}Blind{} is selected,",
-                    "create a {C:attention}condiment"
+                    "create a {C:attention}condiment",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_pates = {
                 name = "Pasta",
                 text = {
-                    "{C:mult}+#1#{} au Mult",
+                    "{C:mult}+#1#{} Mult",
                     "{S:1.1,C:red,E:2}Self-destructs{} at the",
                     "end of round"
                 }
@@ -36,7 +37,7 @@ return {
                 }
             },
             j_grokon_echelle = {
-                name = "Échelle",
+                name = "Ladder",
                 text = {
                     "Gains {X:mult,C:white}X#1#{} Mult per",
                     "{C:attention}consecutive identical{} hand played",
@@ -45,19 +46,23 @@ return {
             },
             j_grokon_candide = {
                 name = "Candide",
-                text = {}
+                text = {
+                    "{C:attention}Grokon",
+                }
             },
             j_grokon_revarine = {
                 name = "Revarine",
                 text = {
                     "Each {C:attention}Jack{} held in hand",
-                    "gives {C:chips}+#1#{} Chips"
+                    "gives {C:chips}+#1#{} Chips",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_turnute = {
                 name = "Turnute",
                 text = {
-                    "Everything costs {C:money}$#1#{} less"
+                    "Everything costs {C:money}$#1#{} less",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_boba = {
@@ -65,14 +70,16 @@ return {
                 text = {
                     "This Joker gains {C:red}+#1#{} Mult",
                     "when each played {C:attention}2{} scores",
-                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_santithur = {
                 name = "Santithur",
                 text = {
                     "Played enhanced cards",
-                    "become {C:attention}Wild"
+                    "become {C:attention}Wild",
+                    "{C:attention}Grokon",
                 }
             },
             j_grokon_felt = {
@@ -81,7 +88,41 @@ return {
                     "Reduces probabilities to {C:green}#1#",
                     "Gains {C:red}+#2#{} Mult when a",
                     "probability event tries to trigger",
-                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+                    "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
+                    "{C:attention}Grokon",
+                }
+            },
+            j_grokon_scarapace = {
+                name = "Scarapace",
+                text = {
+                    "{X:mult,C:white}X#1#{} on the {C:attention}first",
+                    "hand of round",
+                    "{C:attention}Grokon",
+                }
+            },
+            j_grokon_attorney = {
+                name = "Grokon Attorney",
+                text = {
+                    "{C:mult}+#1#{} Mult for",
+                    "each {C:attention}Grokon",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
+                }
+            },
+            j_grokon_typhou = {
+                name = "Typhou",
+                text = {
+                    "{C:attention}Grokon{} Jokers",
+                    "each give {X:mult,C:white} X#1# {} Mult",
+                }
+            },
+            j_grokon_lucky = {
+                name = "Lucky",
+                text = {
+                    "{C:chips}+#1#{} Chips for each",
+                    "{C:attention}Lucky{} bought during the run",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                    "This Joker may appear multiple times",
+                    "{C:attention}Grokon",
                 }
             },
         },

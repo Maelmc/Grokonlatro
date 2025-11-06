@@ -62,3 +62,24 @@ SMODS.Joker {
         return grokon_in_pool(self, args)
     end
 }
+
+SMODS.Joker {
+    key = "typhou",
+    blueprint_compat = true,
+    rarity = 4,
+    cost = 20,
+    pos = { x = 6, y = 0 },
+    soul_pos = {x = 7, y = 0},
+    atlas = "grokon_jokers",
+    config = { extra = { xmult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and (context.other_joker.config.center.grokon) then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}

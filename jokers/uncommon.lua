@@ -1,6 +1,7 @@
 -- mostly taken from VanillaRemade
 SMODS.Joker {
     key = "candide",
+    grokon = true,
     pos = {x = 8, y = 0},
     config = {extra = {chips = 50, mult = 10, min_chips_mult = 0, xmult = 2, min_xmult = 1}},
     loc_vars = function(self, info_queue, card)
@@ -103,6 +104,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "santithur",
+    grokon = true,
     pos = {x = 12, y = 0},
     config = {extra = {}},
     loc_vars = function(self, info_queue, card)
@@ -128,6 +130,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "felt",
+    grokon = true,
     pos = {x = 13, y = 0},
     config = {extra = {num = 0, mult = 0, mult_mod = 5}},
     loc_vars = function(self, info_queue, card)
@@ -145,6 +148,36 @@ SMODS.Joker {
             return {
                 numerator = 0,
                 message = localize("k_upgrade_ex")
+            }
+        end
+
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+    in_pool = function (self, args)
+        return grokon_in_pool(self, args)
+    end
+}
+
+SMODS.Joker {
+    key = "scarapace",
+    grokon = true,
+    pos = {x = 0, y = 1},
+    config = {extra = {xmult = 3}},
+    loc_vars = function(self, info_queue, card)
+        return { vars = {card.ability.extra.xmult} }
+    end,
+    rarity = 2,
+    cost = 6,
+    atlas = "grokon_jokers",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and G.GAME.current_round.hands_played == 0 then
+            return {
+                xmult = card.ability.extra.xmult
             }
         end
     end,
