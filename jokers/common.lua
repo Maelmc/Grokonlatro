@@ -130,8 +130,35 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-    key = "attorney",
+    key = "revarine",
     grokon = true,
+    pos = { x = 9, y = 0 },
+    config = { extra = { chips = 60 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = "grokon_jokers",
+    blueprint_compat = true,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 11 then
+            if context.other_card.debuff then
+                return {
+                    message = localize('k_debuffed'),
+                    colour = G.C.RED
+                }
+            else
+                return {
+                    mult = card.ability.extra.chips
+                }
+            end
+        end
+    end,
+}
+
+SMODS.Joker {
+    key = "attorney",
     pos = {x = 1, y = 1},
     config = {extra = {mult_mod = 5}},
     loc_vars = function(self, info_queue, card)
@@ -167,9 +194,9 @@ SMODS.Joker {
     key = "lucky",
     grokon = true,
     pos = {x = 2, y = 1},
-    config = {extra = {chips = 40}},
+    config = {extra = {chips_mod = 40}},
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.chips, card.ability.extra.chips * (G.GAME and G.GAME.belj_count or 0)} }
+        return { vars = {card.ability.extra.chips_mod, card.ability.extra.chips_mod * (G.GAME and G.GAME.belj_count or 0)} }
     end,
     rarity = 1,
     cost = 4,
@@ -178,7 +205,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                xmult = card.ability.extra.chips * G.GAME.belj_count
+                xmult = card.ability.extra.chips_mod * G.GAME.belj_count
             }
         end
     end,
@@ -187,5 +214,42 @@ SMODS.Joker {
     end,
     in_pool = function (self, args)
         return true, {allow_duplicates = true}
+    end
+}
+
+SMODS.Joker {
+    key = "darkoco",
+    grokon = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    pos = { x = 3, y = 1 },
+    atlas = "grokon_jokers",
+    config = { extra = { chips_mod = 3 } },
+    loc_vars = function(self, info_queue, card)
+        local black_count = 0
+        if G.playing_cards then
+            for _, v in pairs(G.playing_cards) do
+                if v:is_suit('Clubs', nil, true) or v:is_suit('Spades', nil, true) then
+                    black_count = black_count + 1
+                end
+            end
+        else
+            black_count = 26
+        end
+        return { vars = { card.ability.extra.chips_mod, card.ability.extra.chips_mod * black_count } }
+    end,
+    calculate = function(self, card, context)
+        local black_count = 0
+        for _, v in pairs(G.playing_cards) do
+            if v:is_suit('Clubs', nil, true) or v:is_suit('Spades', nil, true) then
+                black_count = black_count + 1
+            end
+        end
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips_mod * black_count
+            }
+        end
     end
 }

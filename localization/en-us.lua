@@ -62,6 +62,7 @@ return {
                 name = "Turnute",
                 text = {
                     "Everything costs {C:money}$#1#{} less",
+                    "{C:inactive,s:0.8}(Rerolls, cards, vouchers, packs)",
                     "{C:attention}Grokon",
                 }
             },
@@ -86,6 +87,7 @@ return {
                 name = "Felt",
                 text = {
                     "Reduces probabilities to {C:green}#1#",
+                    "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}0 in 3{C:inactive})",
                     "Gains {C:red}+#2#{} Mult when a",
                     "probability event tries to trigger",
                     "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
@@ -124,6 +126,16 @@ return {
                     "This Joker may appear multiple times",
                     "{C:attention}Grokon",
                 }
+            },
+            j_grokon_darkoco = {
+                name="Darkoco",
+                text={
+                    "{C:chips}+#1#{} Chips for each",
+                    "{C:spades}Spade{} or {C:clubs}Club{}",
+                    "in {C:attention}full deck",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                    "{C:attention}Grokon",
+                },
             },
         },
     },

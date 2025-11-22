@@ -58,6 +58,7 @@ return {
                 name = "Turnute",
                 text = {
                     "Tout coûte {C:money}#1# ${} de moins",
+                    "{C:inactive,s:0.8}(Renouvellements, cartes, coupons, paquets)",
                     "{C:attention}Grokon",
                 }
             },
@@ -82,6 +83,7 @@ return {
                 name = "Felt",
                 text = {
                     "Réduit les {C:green,E:1,S:1.1}probabilités à #1#",
+                    "{C:inactive}(ex. : {C:green}1 sur 3{C:inactive} -> {C:green}0 sur 3{C:inactive})",
                     "{C:inactive}(ex. : {C:green}1 sur 3{C:inactive} -> {C:green}#1# sur 3{C:inactive})",
                     "Gagne {C:red}+#2#{} au Multi. lorsqu'un événement",
                     "à probabilité essaie de se déclencher",
@@ -121,6 +123,15 @@ return {
                     "Ce Joker peut apparaître plusieurs fois",
                     "{C:attention}Grokon",
                 }
+            },
+            j_grokon_darkoco={
+                name="Darkoco",
+                text={
+                    "{C:chips}+#1#{} Jetons pour chaque",
+                    "{C:spades}Pique{} ou {C:clubs}Trèfle{}",
+                    "restant dans le {C:attention}jeu complet",
+                    "{C:inactive}(Actuellement {C:chips}+#2#{C:inactive} Jetons)",
+                },
             },
         },
     },
